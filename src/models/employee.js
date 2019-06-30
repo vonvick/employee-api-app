@@ -1,6 +1,6 @@
 import Sequelize from 'sequelize';
 
-class EmployeeModel extends Sequelize.Model {
+class Employee extends Sequelize.Model {
   static init(sequelize, DataTypes) {
     return super.init(
       {
@@ -23,6 +23,10 @@ class EmployeeModel extends Sequelize.Model {
           validate: {
             isEmail: true
           },
+          unique: {
+            args: true,
+            msg: 'Oops. There is an existing employee with this email address.',
+          },
           allowNull: false,
           set(value) {
             this.setDataValue('email', value ? value.trim() : value);
@@ -44,4 +48,4 @@ class EmployeeModel extends Sequelize.Model {
   }
 };
 
-export default EmployeeModel;
+export default Employee;
