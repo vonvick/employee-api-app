@@ -1,0 +1,59 @@
+{
+  "name": "employee-api-app",
+  "version": "1.0.0",
+  "description": "An api example for employees for assessment",
+  "scripts": {
+    "start": "nodemon --exec babel-node src/app.js",
+    "build": "babel src --out-dir dist",
+    "serve": "node dist/app.js",
+    "test": "NODE_ENV=test npm run db:migrate-rollback && npm run db:migrate && mocha --require @babel/register tests/**/*.test.js --exit",
+    "db:create": "babel-node ./scripts/db/create",
+    "db:migrate": "babel-node ./scripts/db/migrate",
+    "db:migrate-rollback": "babel-node ./scripts/db/rollback"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vonvick/employee-api-app.git"
+  },
+  "keywords": [
+    "API",
+    "javascript",
+    "sequelize",
+    "express",
+    "node",
+    "ES6"
+  ],
+  "author": "Victor Nwaiwu (vonvikky@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vonvick/employee-api-app/issues"
+  },
+  "homepage": "https://github.com/vonvick/employee-api-app#readme",
+  "dependencies": {
+    "babel-preset-env": "^1.7.0",
+    "body-parser": "^1.19.0",
+    "child-process-promise": "^2.2.1",
+    "core-js": "^2.6.9",
+    "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "pg": "^7.11.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.9.0",
+    "sequelize-cli": "^5.5.0",
+    "whatwg-url": "^7.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/register": "^7.4.4",
+    "chai": "^4.2.0",
+    "faker": "^4.1.0",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.19.1",
+    "supertest": "^4.0.2"
+  }
+}
