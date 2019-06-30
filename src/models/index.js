@@ -1,30 +1,22 @@
-import fs from 'fs';
-import path from 'path';
 import Sequelize from 'sequelize';
 import config from '../config/sequelize.config';
 
-const basename = path.basename(__filename);
-const db = {};
+// Models
+import EmployeeModel from './employee';
 
 const sequelize = new Sequelize(config.url, config);
 
-fs
-  .readdirSync(__dirname)
-  .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
-  })
-  .forEach(file => {
-    const model = sequelize['import'](path.join(__dirname, file));
-    db[model.name] = model;
-  });
+const models = {
+  Empployee: EmployeeModel.init(sequelize, Sequelize)
+};
 
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
-});
+Object.values(models)
+  .filter(model => typeof model.associate === "function")
+  .forEach(model => model.associate(models));
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+const db = {
+  ...models,
+  sequelize
+}
 
 export default db;
