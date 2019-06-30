@@ -8,9 +8,8 @@ describe('Employee Model', () => {
   let user;
   let userParams = factory.users;
 
-  beforeEach((done) => {
-    user = db.Employee.build(userParams);
-    done();
+  beforeEach(async() => {
+    user = await db.Employee.build(userParams);
   });
 
   after(async() => {
