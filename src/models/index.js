@@ -2,12 +2,12 @@ import Sequelize from 'sequelize';
 import config from '../config/sequelize.config';
 
 // Models
-import EmployeeModel from './employee';
+import Employee from './employee';
 
 const sequelize = new Sequelize(config.url, config);
 
 const models = {
-  Empployee: EmployeeModel.init(sequelize, Sequelize)
+  Employee: Employee.init(sequelize, Sequelize)
 };
 
 Object.values(models)
