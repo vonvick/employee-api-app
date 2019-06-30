@@ -1,4 +1,4 @@
-import { addNewUser, getAllUsers } from '../controllers/api/UserController';
+import UserController from '../controllers/api/UserController';
 
 const UserRoute = (router) => {
   router
