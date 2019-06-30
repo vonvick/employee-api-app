@@ -23,6 +23,5 @@ models.sequelize.sync().then(() => {
 })
 
 app.listen(port, () => {
-  // Sync sequelize db models
   console.log(`App started on port: ${port}`)
 });
