@@ -37,4 +37,4 @@ if (!devMode) {
   };
 };
 
- module.exports = config;
+module.exports = config;
