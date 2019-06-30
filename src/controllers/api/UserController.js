@@ -18,7 +18,9 @@ const addNewUser = async (req, res) => {
     
     return res.status(201).json({ data: newEmployee });
   } catch (error) {
-    if (error.name === 'SequelizeValidationError') {
+    if (error.name === 'SequelizeValidationError'
+      || error.name === 'SequelizeUniqueConstraintError'
+    ) {
       return res.status(400).json({ errors: formatErrorMessage(error) });
     }
     return res.status(500).json({ message: error.message });
