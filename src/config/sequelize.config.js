@@ -37,4 +37,4 @@ if (!devMode) {
   };
 };
 
-export default config;
+ module.exports = config;
